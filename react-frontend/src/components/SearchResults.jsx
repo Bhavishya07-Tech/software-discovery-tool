@@ -3,13 +3,13 @@ import ReactPaginate from 'react-paginate';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import '../App.css';
 
-function SearchResults({ 
-  results = [], 
-  showDesc, 
-  itemsPerPage, 
-  searchPerformed, 
-  totalResultsCount, 
-  selectedParentDistributions, 
+function SearchResults({
+  results = [],
+  showDesc,
+  itemsPerPage,
+  searchPerformed,
+  totalResultsCount,
+  selectedParentDistributions,
   osList,
   currentPage,
   totalPages,
@@ -20,7 +20,7 @@ function SearchResults({
   const filteredResults = useMemo(() => {
     if (!Array.isArray(results)) return [];
     if (!refinePackageName.trim()) return results;
-    
+
     return results.filter((result) => {
       const nameMatch = result.packageName.toLowerCase().includes(refinePackageName.toLowerCase());
       const versionMatch = result.version.toLowerCase().includes(refinePackageName.toLowerCase());
@@ -69,6 +69,11 @@ function SearchResults({
                   {ver}
                 </div>
               ))}
+              {result.osName && (
+                <div className="distro-tag">
+                  {result.osName}
+                </div>
+              )}
             </div>
             <div className="content">
               <div className="name">{result.packageName}</div>
@@ -105,7 +110,7 @@ function SearchResults({
             />
           </div>
         )}
-        
+
         {searchPerformed && (
           <button
             onClick={handleScrollToTop}
