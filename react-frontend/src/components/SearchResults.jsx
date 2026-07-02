@@ -69,9 +69,9 @@ function SearchResults({
                   {ver}
                 </div>
               ))}
-              {result.osName && (
+              {result.ostag && (
                 <div className="distro-tag">
-                  {result.osName}
+                  {result.ostag}
                 </div>
               )}
             </div>
